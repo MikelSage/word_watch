@@ -7,13 +7,13 @@ function breakdownListener() {
 function breakdownWords() {
   let words = captureWords();
   let counted_words = countWords(words);
-  debugger
   displayWords(counted_words);
 }
 
 function captureWords() {
   let raw_words = $('.text-submission textarea').val()
-  return raw_words.replace(/\s+/g, " ").trim().split(' ')
+  let trimmed = raw_words.replace(/\s+/g, " ").trim()
+  return trimmed.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ')
 }
 
 function countWords(words) {
@@ -25,12 +25,13 @@ function countWords(words) {
 }
 
 function displayWords(words) {
-  let $article = $('word-count')
-  words.forEach((word) => {
+  let $article = $('.word-count')
+  $article.text('')
+  for (key in words) {
     $article.append(
-      `<p style="font"></p>`
+      `<p style="font-size: ${words[key]}em">${key}</p>`
     )
-  })
+  }
 }
 
 module.exports = {breakdownListener};
