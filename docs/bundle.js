@@ -10448,7 +10448,7 @@ function mapWordCalls(words) {
   })
 }
 
-module.exports = {breakdownListener}
+module.exports = {breakdownListeners}
 
 
 /***/ }),
