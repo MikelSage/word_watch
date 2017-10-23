@@ -16,7 +16,7 @@ function captureWords() {
 }
 
 function formatString(raw_words) {
-  let trimmed = raw_words.replace(/\s+/g, " ").trim()
+  let trimmed = raw_words.replace(/\s+/g, " ").trim().toLowerCase()
   return trimmed.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ')
 }
 
