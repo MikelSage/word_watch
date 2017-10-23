@@ -3,5 +3,5 @@ const breakdown = require('./submit_words');
 
 document.addEventListener("DOMContentLoaded", () => {
   topWord.getTopWord();
-  breakdown.breakdownListener();
+  breakdown.breakdownListeners();
 })

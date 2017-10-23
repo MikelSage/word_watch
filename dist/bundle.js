@@ -10363,7 +10363,7 @@ const breakdown = __webpack_require__(4);
 
 document.addEventListener("DOMContentLoaded", () => {
   topWord.getTopWord();
-  breakdown.breakdownListener();
+  breakdown.breakdownListeners();
 })
 
 
@@ -10375,8 +10375,21 @@ const $ = __webpack_require__(1)
 const topWord = __webpack_require__(0)
 
 
-function breakdownListener() {
+function breakdownListeners() {
+  buttonListener();
+  keyListener();
+}
+
+function buttonListener() {
   $('.text-submission button').on('click', breakdownWords)
+}
+
+function keyListener() {
+  $('.text-submission textarea').keypress(function (element) {
+    if (element.which == 13) {
+      breakdownWords();
+    }
+  })
 }
 
 function breakdownWords() {

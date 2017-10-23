@@ -2,11 +2,19 @@ const $ = require('jQuery')
 const topWord = require('./top_word')
 
 
-function breakdownListener() {
+function breakdownListeners() {
+  buttonListener();
+  keyListener();
+}
+
+function buttonListener() {
   $('.text-submission button').on('click', breakdownWords)
-  $('.text-submission textarea').keypress(function (e) {
-  if (e.which == 13) {
-    breakdownWords();
+}
+
+function keyListener() {
+  $('.text-submission textarea').keypress(function (element) {
+    if (element.which == 13) {
+      breakdownWords();
     }
   })
 }
@@ -67,4 +75,4 @@ function mapWordCalls(words) {
   })
 }
 
-module.exports = {breakdownListener}
+module.exports = {breakdownListeners}
