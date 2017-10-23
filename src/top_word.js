@@ -1,4 +1,4 @@
-const $ = require('jQuery');
+const $ = require('jQuery')
 
 function getTopWord() {
   $.ajax({
@@ -14,4 +14,4 @@ function displayTopWord(word_data) {
   }
 }
 
-module.exports = {getTopWord};
+module.exports = {getTopWord}

@@ -1,13 +1,14 @@
-const $ = require('jQuery');
+const $ = require('jQuery')
 
 function breakdownListener() {
   $('.text-submission button').on('click', breakdownWords)
 }
 
 function breakdownWords() {
-  let words = captureWords();
-  let counted_words = countWords(words);
-  displayWords(counted_words);
+  let words = captureWords()
+  submitWords(words)
+  // let counted_words = countWords(words)
+  // displayWords(counted_words)
 }
 
 function captureWords() {
@@ -17,7 +18,7 @@ function captureWords() {
 
 function formatString(raw_words) {
   let trimmed = raw_words.replace(/\s+/g, " ").trim().toLowerCase()
-  return trimmed.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ')
+  return trimmed.replace(/[.,\/#!$%\^&\*:{}=\-_`~()]/g,"").split(' ')
 }
 
 function countWords(words) {
@@ -38,4 +39,19 @@ function displayWords(words) {
   }
 }
 
-module.exports = {breakdownListener};
+function submitWords(words) {
+  let calls = mapWordCalls(words)
+  $.when(...calls).then((data) => {})
+}
+
+function mapWordCalls(words) {
+  return words.map((word) => {
+    return $.ajax({
+      url: 'https://wordwatch-api.herokuapp.com/api/v1/words',
+      method: "POST",
+      data: {'word': {'value': word}}
+    })
+  })
+}
+
+module.exports = {breakdownListener}
