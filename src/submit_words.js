@@ -12,6 +12,10 @@ function breakdownWords() {
 
 function captureWords() {
   let raw_words = $('.text-submission textarea').val()
+  return formatString(raw_words)
+}
+
+function formatString(raw_words) {
   let trimmed = raw_words.replace(/\s+/g, " ").trim()
   return trimmed.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(' ')
 }
