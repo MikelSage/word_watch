@@ -4,6 +4,11 @@ const topWord = require('./top_word')
 
 function breakdownListener() {
   $('.text-submission button').on('click', breakdownWords)
+  $('.text-submission textarea').keypress(function (e) {
+  if (e.which == 13) {
+    breakdownWords();
+    }
+  })
 }
 
 function breakdownWords() {
