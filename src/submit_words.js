@@ -1,4 +1,6 @@
 const $ = require('jQuery')
+const topWord = require('./top_word')
+
 
 function breakdownListener() {
   $('.text-submission button').on('click', breakdownWords)
@@ -6,9 +8,15 @@ function breakdownListener() {
 
 function breakdownWords() {
   let words = captureWords()
+  $('.word-count').text('Processing Paragraph...')
   submitWords(words)
-  // let counted_words = countWords(words)
-  // displayWords(counted_words)
+}
+
+function updatePage(words) {
+  topWord.getTopWord()
+  $('.text-submission textarea').val('')
+  let counted_words = countWords(words)
+  displayWords(counted_words)
 }
 
 function captureWords() {
@@ -41,7 +49,7 @@ function displayWords(words) {
 
 function submitWords(words) {
   let calls = mapWordCalls(words)
-  $.when(...calls).then((data) => {})
+  $.when(...calls).then(() => {updatePage(words)})
 }
 
 function mapWordCalls(words) {
