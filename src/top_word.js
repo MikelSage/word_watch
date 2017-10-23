@@ -14,4 +14,4 @@ function displayTopWord(word_data) {
   }
 }
 
-module.exports = getTopWord();
+module.exports = {getTopWord};
