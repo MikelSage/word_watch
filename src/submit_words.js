@@ -1,7 +1,7 @@
 const $ = require('jQuery');
 
 function breakdownListener() {
-  
+  $('.text-submission button').on('click', breakdownWords)
 }
 
 function breakdownWords() {
