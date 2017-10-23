@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // have fun!
-})
+const $ = require('jQuery');
 
+document.addEventListener("DOMContentLoaded", () => {
+  
+})
